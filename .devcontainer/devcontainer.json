@@ -1,0 +1,26 @@
+{
+    "build": {
+        "dockerfile": "../utils/Dockerfile"
+    },
+    "features": {
+        "ghcr.io/ChristopherMacGown/devcontainer-features/direnv:1": {},
+        "ghcr.io/devcontainers/features/sshd:1": {}
+    },
+    "forwardPorts": [
+        8443
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "jlcs-es.x509-parser",
+                "AykutSarac.jsoncrack-vscode",
+                "redhat.vscode-yaml",
+                "rangav.vscode-thunder-client"
+            ]
+        }
+    },
+    "postCreateCommand": "postCreate.sh",
+    //"remoteUser": "root",
+    "workspaceFolder": "/docker-estserver",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/${containerWorkspaceFolder},type=bind,consistency=cached"
+}

@@ -1,0 +1,9 @@
+set_var EASYRSA_REQ_COUNTRY    "UK"
+set_var EASYRSA_REQ_PROVINCE   "Scotland"
+set_var EASYRSA_REQ_CITY       "Hogsmeade"
+set_var EASYRSA_REQ_ORG        "Hogwarts"
+set_var EASYRSA_REQ_EMAIL      "dumbledore@example.com"
+set_var EASYRSA_REQ_OU         "Aurors"
+set_var EASYRSA_ALGO           "rsa"
+set_var EASYRSA_KEY_SIZE       4096
+set_var EASYRSA_CERT_EXPIRE    30
