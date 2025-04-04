@@ -1,0 +1,30 @@
+---
+name: est
+services:
+  easyrsa:
+    build:
+      context: .
+      target: easyrsa-img
+    image: easyrsa-img:latest
+    environment:
+      EASYRSA_SERVER_NAME: "est-lab-srv"
+      EASYRSA_SERVER_IP: "192.168.129.170"
+      EASYRSA_REQ_CN: "Easy-RSA EST CA"
+      EASYRSA_BATCH: 1
+      EASYRSA_NO_PASS: 1
+    working_dir: /docker-estserver
+    volumes:
+      - ../:/docker-estserver
+    entrypoint: ["sh", "/docker-estserver/utils/gen-certs.sh"]
+  estserver:
+    build:
+      context: .
+      target: estserver-img
+    image: estserver-img
+    ports:
+      - 8443:8443
+    working_dir: /docker-estserver
+    volumes:
+      - ../:/docker-estserver:ro
+    command: ["estserver", "-config", "/docker-estserver/server/server.cfg"]
+    restart: unless-stopped
