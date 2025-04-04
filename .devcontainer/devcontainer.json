@@ -4,8 +4,8 @@
         "ghcr.io/ChristopherMacGown/devcontainer-features/direnv:1": {},
         "ghcr.io/devcontainers/features/sshd:1": {}
     },
-    "forwardPorts": [
-        8443
+    "appPort": [
+        "8443:8443"
     ],
     "customizations": {
         "vscode": {
