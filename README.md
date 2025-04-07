@@ -3,6 +3,7 @@
 - [docker-estserver](#docker-estserver)
   - [Overview](#overview)
     - [Requirements](#requirements)
+    - [File details](#file-details)
   - [Quickstart: dev container](#quickstart-dev-container)
     - [Validate configuration](#validate-configuration)
     - [Starting the server](#starting-the-server)
@@ -22,6 +23,30 @@ This repository helps you deploy the [GlobalSign EST Server](https://github.com/
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 
+### File details
+
+Following are the files present in this repository
+
+```shell
+.
+├── .devcontainer
+│   └── devcontainer.json     <-- metadata and settings required to configure the development container
+├── .envrc                    <-- environment variables loaded into shell by direnv
+├── .gitignore
+├── LICENSE
+├── README.md
+├── server
+│   └── server.cfg            <-- estserver configuration file
+├── utils
+│   ├── Dockerfile            <-- build estserver and easyrsa image when deloying using docker compose
+│   ├── docker-compose.yaml   <-- build and run server and certificate services
+│   ├── estctl.sh             <-- supervisorctl commands to check estserver logs and process status
+│   ├── gen-certs.sh          <-- initialize PKI and generate EST server certificates using EasyRSA
+│   ├── postCreate.sh         <-- Script run as part of postCreateCommand in Dev Container
+│   └── supervisord.conf      <-- Supervisor configuration to manage EST server process
+└── vars                      <-- EasyRSA configuration variables for certificate generation
+```
+
 ## Quickstart: dev container
 
 Use the following steps to launch the project using VS Code Dev Containers extension.
@@ -31,6 +56,7 @@ Use the following steps to launch the project using VS Code Dev Containers exten
 ### Validate configuration
 
 - Update and verify the easyrsa variables in the `vars` and `.envrc` files. For more details on the same refer [link](https://github.com/OpenVPN/easy-rsa/blob/master/doc/EasyRSA-Advanced.md#environmental-variables-reference).
+- Update and confirm the estserver configuration in `server/server.cfg`
 
 ### Starting the server
 
